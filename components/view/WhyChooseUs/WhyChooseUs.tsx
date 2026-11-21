@@ -8,7 +8,6 @@ import {
     RiArrowRightLine,
     RiArrowRightUpLine,
     RiPhoneFill,
-    RiFlashlightFill,
     RiAwardFill,
     RiStarFill,
     RiMapPinFill,
@@ -51,62 +50,55 @@ const REASON_LABELS = [
 ];
 
 export function WhyChooseUs() {
-    const heroReason = whyChooseUs[0];
-    const secondaryReasons = whyChooseUs.slice(1, 5);
-    const closingReason = whyChooseUs[5];
-
     return (
-        <section className="relative overflow-hidden bg-[oklch(0.985_0.003_90)] py-10">
+        <section className="relative isolate overflow-hidden bg-background py-10">
             {/* ============================================================
-                BACKGROUND — Paper texture + editorial accents
+                BACKGROUND — Restrained atmosphere
             ============================================================ */}
-            <div className="pointer-events-none absolute inset-0">
-                {/* Warm paper grain (dot texture at very low opacity) */}
+            <div className="pointer-events-none absolute inset-0 -z-10">
+                {/* Primary wash top-right */}
+                <div className="absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-primary/[0.06] blur-[140px]" />
+
+                {/* Bottom-left subtle accent */}
+                <div className="absolute -bottom-40 -left-40 h-[500px] w-[500px] rounded-full bg-primary/[0.04] blur-[140px]" />
+
+                {/* Fine grid texture */}
                 <div
-                    className="absolute inset-0 opacity-[0.5]"
+                    className="absolute inset-0 opacity-[0.03] dark:opacity-[0.045]"
                     style={{
-                        backgroundImage: `radial-gradient(circle, oklch(0.4 0.02 90) 0.5px, transparent 0.5px)`,
-                        backgroundSize: "8px 8px",
+                        backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
+                        backgroundSize: "72px 72px",
                         maskImage:
-                            "radial-gradient(ellipse 90% 80% at 50% 30%, black 20%, transparent 90%)",
+                            "radial-gradient(ellipse 70% 55% at 50% 30%, black 10%, transparent 75%)",
                         WebkitMaskImage:
-                            "radial-gradient(ellipse 90% 80% at 50% 30%, black 20%, transparent 90%)",
+                            "radial-gradient(ellipse 70% 55% at 50% 30%, black 10%, transparent 75%)",
                     }}
                 />
 
-                {/* Soft primary wash — top right */}
-                <div className="absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-primary/[0.08] blur-[140px]" />
-
-                {/* Bottom-left warm accent */}
-                <div className="absolute -bottom-40 -left-40 h-[500px] w-[500px] rounded-full bg-[oklch(0.85_0.1_60)]/20 blur-[140px]" />
-
-                {/* Fine horizontal rule at top of section */}
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/15 to-transparent" />
+                {/* Top rule */}
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
             </div>
 
-            <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
+            <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
                 {/* ============================================================
-                    SECTION HEADER — Editorial magazine style
+                    SECTION HEADER — Editorial
                 ============================================================ */}
-                <div className="mb-16 lg:mb-24">
+                <div className="mb-12 lg:mb-16">
                     <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-12">
-
-                        {/* LEFT: Chapter mark + headline (7 cols) */}
+                        {/* LEFT: Chapter + headline */}
                         <div className="lg:col-span-7">
                             {/* Chapter mark */}
                             <div className="mb-6 flex items-center gap-3">
-                                <span className="flex size-10 items-center justify-center rounded-full border border-foreground/15 bg-white font-serif text-sm font-bold italic text-primary shadow-sm">
-                                    02
+                                <span className="flex size-9 items-center justify-center rounded-full border border-primary/25 bg-primary/[0.06] font-serif text-xs font-bold italic text-primary backdrop-blur-sm">
                                 </span>
-                                <div className="h-px w-12 bg-foreground/20" />
-                                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-foreground/50">
+                                <div className="h-px w-10 bg-border" />
+                                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground">
                                     Why Drivers Choose Us
                                 </span>
                             </div>
 
-                            {/* Massive headline */}
-                            <h2 className="text-[2.4rem] font-bold leading-[0.98] -tracking-[0.03em] text-foreground sm:text-5xl lg:text-[4rem]">
+                            {/* Headline */}
+                            <h2 className="text-[2.4rem] font-bold leading-[0.98] -tracking-[0.03em] text-foreground sm:text-5xl lg:text-[3.75rem]">
                                 Built for Dubai{" "}
                                 <span className="relative inline-block">
                                     <span className="relative z-10 italic text-primary">
@@ -131,21 +123,21 @@ export function WhyChooseUs() {
                             </h2>
                         </div>
 
-                        {/* RIGHT: Intro text (5 cols) */}
+                        {/* RIGHT: Intro */}
                         <div className="lg:col-span-5">
                             <div className="relative pl-6">
                                 <RiDoubleQuotesL
-                                    className="absolute -left-1 -top-3 size-8 text-primary/15"
+                                    className="absolute -left-1 -top-3 size-7 text-primary/15"
                                     aria-hidden="true"
                                 />
-                                <p className="font-serif text-base italic leading-relaxed text-foreground/75 sm:text-lg">
+                                <p className="font-serif text-base italic leading-relaxed text-foreground/80 sm:text-lg">
                                     Six reasons thousands of Dubai drivers trust
                                     us with their vehicles — from emergency
                                     breakdowns to routine maintenance.
                                 </p>
                                 <div className="mt-4 flex items-center gap-2">
                                     <RiFingerprintLine className="size-4 text-primary" />
-                                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/50">
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
                                         Verified by 500+ drivers
                                     </span>
                                 </div>
@@ -155,95 +147,104 @@ export function WhyChooseUs() {
                 </div>
 
                 {/* ============================================================
-                    MAIN GRID — Three distinct card types
+                    BENTO GRID — 3-column asymmetric
+                    Row 1: Hero (2 cols) + 1 standard
+                    Row 2: 3 standard
+                    Row 3: 1 standard + closing (2 cols)
                 ============================================================ */}
-                <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-7">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+                    {/* --- REASON 1: HERO CARD (spans 2 cols on desktop) --- */}
+                    <ReasonCard
+                        item={whyChooseUs[0]}
+                        Icon={ICONS[0]}
+                        tags={FEATURE_TAGS[0]}
+                        number="01"
+                        label={REASON_LABELS[0]}
+                        variant="hero"
+                        className="sm:col-span-2 lg:col-span-2"
+                    />
 
-                    {/* ============ COLUMN 1: HERO + 2 STACKED ============ */}
-                    <div className="flex flex-col gap-6 lg:col-span-5 lg:gap-7">
-                        {/* Hero reason */}
-                        <HeroCaseCard
-                            item={heroReason}
-                            Icon={ICONS[0]}
-                            tags={FEATURE_TAGS[0]}
-                            label={REASON_LABELS[0]}
-                        />
+                    {/* --- REASON 2 --- */}
+                    <ReasonCard
+                        item={whyChooseUs[1]}
+                        Icon={ICONS[1]}
+                        tags={FEATURE_TAGS[1]}
+                        number="02"
+                        label={REASON_LABELS[1]}
+                        variant="default"
+                    />
 
-                        {/* Two stacked reasons */}
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-1 lg:gap-7">
-                            {secondaryReasons.slice(0, 2).map((reason, i) => (
-                                <StackedCaseCard
-                                    key={i}
-                                    item={reason}
-                                    Icon={ICONS[i + 1]}
-                                    tags={FEATURE_TAGS[i + 1]}
-                                    number={String(i + 2).padStart(2, "0")}
-                                    label={REASON_LABELS[i + 1]}
-                                />
-                            ))}
-                        </div>
-                    </div>
+                    {/* --- REASON 3 --- */}
+                    <ReasonCard
+                        item={whyChooseUs[2]}
+                        Icon={ICONS[2]}
+                        tags={FEATURE_TAGS[2]}
+                        number="03"
+                        label={REASON_LABELS[2]}
+                        variant="default"
+                    />
 
-                    {/* ============ COLUMN 2: TALL FEATURE + 2 TIMELINE ============ */}
-                    <div className="flex flex-col gap-6 lg:col-span-7 lg:gap-7">
-                        {/* Featured tall card */}
-                        <TallFeatureCard
-                            item={secondaryReasons[2]}
-                            Icon={ICONS[3]}
-                            tags={FEATURE_TAGS[3]}
-                            number="04"
-                            label={REASON_LABELS[3]}
-                        />
+                    {/* --- REASON 4 --- */}
+                    <ReasonCard
+                        item={whyChooseUs[3]}
+                        Icon={ICONS[3]}
+                        tags={FEATURE_TAGS[3]}
+                        number="04"
+                        label={REASON_LABELS[3]}
+                        variant="default"
+                    />
 
-                        {/* Two timeline-style horizontal cards */}
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-7">
-                            <TimelineCard
-                                item={secondaryReasons[3]}
-                                Icon={ICONS[4]}
-                                tags={FEATURE_TAGS[4]}
-                                number="05"
-                                label={REASON_LABELS[4]}
-                            />
-                            <ClosingTimelineCard
-                                item={closingReason}
-                                Icon={ICONS[5]}
-                                tags={FEATURE_TAGS[5] || []}
-                                number="06"
-                                label={REASON_LABELS[5]}
-                            />
-                        </div>
-                    </div>
+                    {/* --- REASON 5 --- */}
+                    <ReasonCard
+                        item={whyChooseUs[4]}
+                        Icon={ICONS[4]}
+                        tags={FEATURE_TAGS[4]}
+                        number="05"
+                        label={REASON_LABELS[4]}
+                        variant="default"
+                    />
+
+                    {/* --- REASON 6: CLOSING CARD (spans 2 cols) --- */}
+                    <ReasonCard
+                        item={whyChooseUs[5]}
+                        Icon={ICONS[5]}
+                        tags={FEATURE_TAGS[5]}
+                        number="06"
+                        label={REASON_LABELS[5]}
+                        variant="closing"
+                        className="sm:col-span-2 lg:col-span-2"
+                    />
                 </div>
 
                 {/* ============================================================
-                    BOTTOM CTA — Magazine-style "call to action" strip
+                    BOTTOM CTA — Compact strip
                 ============================================================ */}
-                <div className="mt-16 lg:mt-20">
-                    <div className="relative overflow-hidden rounded-2xl border border-foreground/10 bg-white shadow-[0_4px_20px_-4px_oklch(0.2_0.02_90/0.08)]">
+                <div className="mt-12 lg:mt-16">
+                    <div className="relative overflow-hidden rounded-2xl border border-border/70 bg-gradient-to-br from-card via-card to-primary/[0.04] p-5 sm:p-6">
                         {/* Corner marks */}
-                        <div className="pointer-events-none absolute left-3 top-3 size-6">
-                            <div className="absolute left-0 top-0 h-px w-5 bg-primary/40" />
-                            <div className="absolute left-0 top-0 h-5 w-px bg-primary/40" />
+                        <div className="pointer-events-none absolute left-3 top-3 size-5">
+                            <div className="absolute left-0 top-0 h-px w-4 bg-primary/40" />
+                            <div className="absolute left-0 top-0 h-4 w-px bg-primary/40" />
                         </div>
-                        <div className="pointer-events-none absolute bottom-3 right-3 size-6">
-                            <div className="absolute bottom-0 right-0 h-px w-5 bg-primary/40" />
-                            <div className="absolute bottom-0 right-0 h-5 w-px bg-primary/40" />
+                        <div className="pointer-events-none absolute bottom-3 right-3 size-5">
+                            <div className="absolute bottom-0 right-0 h-px w-4 bg-primary/40" />
+                            <div className="absolute bottom-0 right-0 h-4 w-px bg-primary/40" />
                         </div>
 
-                        <div className="flex flex-col items-center justify-between gap-6 px-6 py-6 sm:flex-row sm:px-8 sm:py-7">
-                            {/* Left: Trust line */}
-                            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+                        <div className="relative flex flex-col items-center justify-between gap-5 sm:flex-row">
+                            {/* Left: Trust signals */}
+                            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
                                 {[
                                     { icon: RiShieldCheckLine, text: "Workmanship Guaranteed" },
                                     { icon: RiAwardFill, text: "Certified Technicians" },
-                                    { icon: RiMapPinFill, text: "Dubai-Wide Coverage" },
-                                    { icon: RiUserStarFill, text: "500+ Happy Drivers" },
+                                    { icon: RiMapPinFill, text: "Dubai-Wide" },
+                                    { icon: RiUserStarFill, text: "500+ Drivers" },
                                 ].map((item, i) => {
                                     const Icon = item.icon;
                                     return (
                                         <div
                                             key={i}
-                                            className="inline-flex items-center gap-2 text-xs font-semibold text-foreground/70"
+                                            className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-muted-foreground sm:text-xs"
                                         >
                                             <Icon className="size-3.5 text-primary" />
                                             <span>{item.text}</span>
@@ -255,7 +256,7 @@ export function WhyChooseUs() {
                             {/* Right: CTA */}
                             <Link
                                 href={SiteConfig.numberCallLink}
-                                className="group relative inline-flex h-11 items-center justify-center gap-2.5 overflow-hidden rounded-full bg-foreground px-6 text-sm font-bold text-background shadow-lg shadow-foreground/20 transition-all duration-300 hover:shadow-xl hover:shadow-foreground/30"
+                                className="group relative inline-flex h-11 items-center justify-center gap-2.5 overflow-hidden rounded-xl bg-primary px-6 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/40"
                             >
                                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
                                 <RiPhoneFill className="relative size-4" />
@@ -271,359 +272,156 @@ export function WhyChooseUs() {
 }
 
 /* ============================================================
-    HERO CASE CARD — Editorial, large, paper
+    UNIFIED CARD — 3 variants: hero, default, closing
 ============================================================ */
-function HeroCaseCard({
-    item,
-    Icon,
-    tags,
-    label,
-}: {
-    item: (typeof whyChooseUs)[number];
-    Icon: React.ElementType;
-    tags: string[];
-    label: string;
-}) {
-    const cleanName = item.name.replace(/:$/, "");
-
-    return (
-        <article className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-white p-6 shadow-[0_4px_24px_-8px_oklch(0.2_0.02_90/0.12)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_12px_40px_-12px_oklch(0.2_0.02_90/0.2)] sm:p-7">
-            {/* Top accent line — reveals on hover */}
-            <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-            {/* Pin dot — editorial detail */}
-            <div className="absolute right-5 top-5 flex size-2 items-center justify-center">
-                <span className="absolute inset-0 rounded-full bg-primary/20" />
-                <span className="relative size-1 rounded-full bg-primary" />
-            </div>
-
-            <div className="flex flex-col">
-                {/* Header: icon + reason label */}
-                <div className="flex items-center gap-3">
-                    <div className="relative">
-                        <div className="absolute inset-0 rounded-lg bg-primary/15 blur-md" />
-                        <div className="relative flex size-11 items-center justify-center rounded-lg bg-primary shadow-md shadow-primary/20 transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3">
-                            <Icon className="size-5 text-primary-foreground" />
-                        </div>
-                    </div>
-                    <div>
-                        <p className="font-serif text-[10px] font-bold italic uppercase tracking-[0.2em] text-primary">
-                            Reason 01
-                        </p>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-foreground/40">
-                            {label}
-                        </p>
-                    </div>
-                </div>
-
-                {/* Title */}
-                <h3 className="mt-5 text-xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-2xl">
-                    {cleanName}
-                </h3>
-
-                {/* Description */}
-                <p className="mt-3 text-sm leading-relaxed text-foreground/60">
-                    {item.description}
-                </p>
-
-                {/* Tags */}
-                <div className="mt-5 flex flex-wrap gap-1.5">
-                    {tags.map((tag) => (
-                        <span
-                            key={tag}
-                            className="inline-flex items-center gap-1 rounded-full border border-foreground/10 bg-foreground/[0.03] px-2 py-0.5 text-[10px] font-semibold text-foreground/60"
-                        >
-                            <span className="size-1 rounded-full bg-primary" />
-                            {tag}
-                        </span>
-                    ))}
-                </div>
-
-                {/* Footer: live + rating */}
-                <div className="mt-5 flex items-center justify-between border-t border-foreground/10 pt-4">
-                    <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-primary">
-                        <span className="relative flex size-1.5">
-                            <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary/60" />
-                            <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
-                        </span>
-                        Live Now
-                    </span>
-                    <div className="flex items-center gap-0.5">
-                        {[...Array(5)].map((_, i) => (
-                            <RiStarFill key={i} className="size-3 text-primary" />
-                        ))}
-                        <span className="ml-1.5 text-[10px] font-bold text-foreground/60">
-                            5.0
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </article>
-    );
-}
-
-/* ============================================================
-    STACKED CASE CARD — Small horizontal editorial
-============================================================ */
-function StackedCaseCard({
+function ReasonCard({
     item,
     Icon,
     tags,
     number,
     label,
+    variant = "default",
+    className = "",
 }: {
     item: (typeof whyChooseUs)[number];
     Icon: React.ElementType;
     tags: string[];
     number: string;
     label: string;
+    variant?: "hero" | "default" | "closing";
+    className?: string;
 }) {
     const cleanName = item.name.replace(/:$/, "");
+    const isHero = variant === "hero";
+    const isClosing = variant === "closing";
 
     return (
-        <article className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-white p-5 shadow-[0_2px_12px_-4px_oklch(0.2_0.02_90/0.1)] transition-all duration-500 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_8px_30px_-10px_oklch(0.2_0.02_90/0.18)] sm:p-6">
-            {/* Watermark numeral — subtle, serif */}
-            <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-2 -top-4 select-none font-serif text-[4.5rem] font-bold italic leading-none text-foreground/[0.04] transition-colors duration-500 group-hover:text-primary/[0.08]"
+        <article
+            className={`group relative flex flex-col overflow-hidden rounded-2xl border bg-card/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-card hover:shadow-lg hover:shadow-primary/[0.06] ${
+                isClosing
+                    ? "border-primary/30 bg-gradient-to-br from-card via-card to-primary/[0.06] hover:border-primary/50"
+                    : "border-border/70 hover:border-primary/40"
+            } ${className}`}
+        >
+            {/* Hover accent gradient */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+            <div
+                className={`relative flex h-full flex-col ${
+                    isHero ? "p-6 sm:p-7" : "p-5 sm:p-6"
+                }`}
             >
-                {number}
-            </span>
-
-            <div className="relative flex items-start gap-4">
-                {/* Icon */}
-                <div className="shrink-0">
-                    <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10 transition-all duration-500 group-hover:bg-primary">
-                        <Icon className="size-4 text-primary transition-colors duration-500 group-hover:text-primary-foreground" />
-                    </div>
-                </div>
-
-                {/* Content */}
-                <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                        <p className="font-serif text-[10px] font-bold italic uppercase tracking-[0.2em] text-primary">
-                            Reason {number}
-                        </p>
-                        <span className="h-2 w-px bg-foreground/15" />
-                        <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-foreground/40">
-                            {label}
-                        </p>
-                    </div>
-
-                    <h3 className="mt-1.5 text-base font-bold leading-tight tracking-tight text-foreground">
-                        {cleanName}
-                    </h3>
-
-                    <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-foreground/55">
-                        {item.description}
-                    </p>
-
-                    {/* Tags (compact) */}
-                    <div className="mt-3 flex flex-wrap gap-1">
-                        {tags.slice(0, 2).map((tag) => (
-                            <span
-                                key={tag}
-                                className="inline-flex items-center rounded-full bg-foreground/[0.04] px-2 py-0.5 text-[9px] font-semibold text-foreground/50"
-                            >
-                                {tag}
-                            </span>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </article>
-    );
-}
-
-/* ============================================================
-    TALL FEATURE CARD — Editorial hero, vertical emphasis
-============================================================ */
-function TallFeatureCard({
-    item,
-    Icon,
-    tags,
-    number,
-    label,
-}: {
-    item: (typeof whyChooseUs)[number];
-    Icon: React.ElementType;
-    tags: string[];
-    number: string;
-    label: string;
-}) {
-    const cleanName = item.name.replace(/:$/, "");
-
-    return (
-        <article className="group relative flex-1 overflow-hidden rounded-2xl border border-foreground/10 bg-white p-6 shadow-[0_4px_20px_-8px_oklch(0.2_0.02_90/0.1)] transition-all duration-500 hover:border-primary/20 hover:shadow-[0_12px_40px_-12px_oklch(0.2_0.02_90/0.18)] sm:p-7">
-            {/* Watermark numeral — big, behind */}
-            <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-4 -top-8 select-none font-serif text-[8rem] font-bold italic leading-none text-foreground/[0.04] transition-colors duration-500 group-hover:text-primary/[0.08]"
-            >
-                {number}
-            </span>
-
-            <div className="relative">
-                {/* Header row */}
-                <div className="flex items-start justify-between">
+                {/* Header: icon + step number */}
+                <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-3">
-                        <div className="flex size-12 items-center justify-center rounded-xl bg-primary shadow-lg shadow-primary/20 transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3">
-                            <Icon className="size-5 text-primary-foreground" />
+                        <div
+                            className={`flex items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:ring-primary ${
+                                isHero ? "size-12" : "size-10"
+                            }`}
+                        >
+                            <Icon
+                                className={
+                                    isHero ? "size-5" : "size-4"
+                                }
+                            />
                         </div>
                         <div>
-                            <p className="font-serif text-[10px] font-bold italic uppercase tracking-[0.2em] text-primary">
+                            <p className="font-serif text-[10px] font-bold uppercase italic tracking-[0.2em] text-primary">
                                 Reason {number}
                             </p>
-                            <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-foreground/40">
+                            <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
                                 {label}
                             </p>
                         </div>
                     </div>
 
-                    {/* Number tag */}
-                    <span className="rounded-full border border-foreground/10 bg-foreground/[0.03] px-2 py-0.5 text-[9px] font-bold text-foreground/50">
+                    {/* Small number tag */}
+                    <span className="rounded-full border border-border bg-background/60 px-2 py-0.5 text-[9px] font-bold text-muted-foreground">
                         #{number}
                     </span>
                 </div>
 
                 {/* Title */}
-                <h3 className="mt-5 text-xl font-bold leading-tight tracking-tight text-foreground sm:text-2xl">
+                <h3
+                    className={`mt-4 font-bold leading-tight tracking-tight text-foreground ${
+                        isHero
+                            ? "text-xl sm:text-2xl"
+                            : "text-base sm:text-lg"
+                    }`}
+                >
                     {cleanName}
                 </h3>
 
                 {/* Description */}
-                <p className="mt-3 text-sm leading-relaxed text-foreground/60">
+                <p
+                    className={`mt-2 flex-1 leading-relaxed text-muted-foreground ${
+                        isHero
+                            ? "text-sm sm:text-[15px]"
+                            : "text-xs sm:text-[13px]"
+                    }`}
+                >
                     {item.description}
                 </p>
 
-                {/* Tags row */}
-                <div className="mt-5 flex flex-wrap gap-1.5">
-                    {tags.map((tag) => (
-                        <span
-                            key={tag}
-                            className="inline-flex items-center gap-1 rounded-md border border-foreground/10 bg-foreground/[0.03] px-2 py-0.5 text-[10px] font-semibold text-foreground/60"
+                {/* Tags */}
+                {tags && tags.length > 0 && (
+                    <div className="mt-4 flex flex-wrap gap-1.5">
+                        {(isHero ? tags : tags.slice(0, 2)).map((tag) => (
+                            <span
+                                key={tag}
+                                className="inline-flex items-center gap-1 rounded-md border border-border/60 bg-background/60 px-2 py-0.5 text-[10px] font-semibold text-foreground/70"
+                            >
+                                <RiCheckboxCircleFill className="size-2.5 text-primary" />
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                )}
+
+                {/* Footer — varies by variant */}
+                <div className="mt-5 flex items-center justify-between border-t border-border/60 pt-3">
+                    {isHero ? (
+                        // Hero: Live + rating
+                        <>
+                            <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-primary">
+                                <span className="relative flex size-1.5">
+                                    <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary/60" />
+                                    <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
+                                </span>
+                                Live Now
+                            </span>
+                            <div className="flex items-center gap-0.5">
+                                {[...Array(5)].map((_, i) => (
+                                    <RiStarFill
+                                        key={i}
+                                        className="size-3 text-primary"
+                                    />
+                                ))}
+                                <span className="ml-1.5 text-[10px] font-bold text-muted-foreground">
+                                    5.0
+                                </span>
+                            </div>
+                        </>
+                    ) : isClosing ? (
+                        // Closing: CTA link
+                        <Link
+                            href="/about"
+                            className="group/btn inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-primary transition-colors hover:text-primary/80"
                         >
-                            <RiCheckboxCircleFill className="size-2.5 text-primary" />
-                            {tag}
-                        </span>
-                    ))}
+                            Learn our story
+                            <RiArrowRightUpLine className="size-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                        </Link>
+                    ) : (
+                        // Default: subtle arrow
+                        <>
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                                {number} / 06
+                            </span>
+                            <RiArrowRightLine className="size-3.5 text-muted-foreground/40 transition-all group-hover:translate-x-0.5 group-hover:text-primary" />
+                        </>
+                    )}
                 </div>
             </div>
-        </article>
-    );
-}
-
-/* ============================================================
-    TIMELINE CARD — Horizontal editorial, compact
-============================================================ */
-function TimelineCard({
-    item,
-    Icon,
-    tags,
-    number,
-    label,
-}: {
-    item: (typeof whyChooseUs)[number];
-    Icon: React.ElementType;
-    tags: string[];
-    number: string;
-    label: string;
-}) {
-    const cleanName = item.name.replace(/:$/, "");
-
-    return (
-        <article className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-white p-5 shadow-[0_2px_12px_-4px_oklch(0.2_0.02_90/0.1)] transition-all duration-500 hover:-translate-y-1 hover:border-primary/20 hover:shadow-[0_8px_30px_-10px_oklch(0.2_0.02_90/0.18)] sm:p-6">
-            {/* Top number row */}
-            <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                    <span className="font-serif text-xs font-bold italic text-primary">
-                        {number}
-                    </span>
-                    <span className="h-2.5 w-px bg-foreground/15" />
-                    <span className="text-[9px] font-semibold uppercase tracking-[0.15em] text-foreground/40">
-                        {label}
-                    </span>
-                </div>
-                <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10 transition-all duration-500 group-hover:bg-primary">
-                    <Icon className="size-4 text-primary transition-colors duration-500 group-hover:text-primary-foreground" />
-                </div>
-            </div>
-
-            {/* Title */}
-            <h3 className="mt-4 text-base font-bold leading-tight tracking-tight text-foreground">
-                {cleanName}
-            </h3>
-
-            {/* Description */}
-            <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-foreground/55">
-                {item.description}
-            </p>
-
-            {/* Tag */}
-            <div className="mt-4 flex items-center gap-2 border-t border-foreground/10 pt-3">
-                <span className="size-1 rounded-full bg-primary" />
-                <span className="text-[10px] font-semibold text-foreground/60">
-                    {tags[0]}
-                </span>
-            </div>
-        </article>
-    );
-}
-
-/* ============================================================
-    CLOSING TIMELINE CARD — Final word with CTA
-============================================================ */
-function ClosingTimelineCard({
-    item,
-    Icon,
-    tags,
-    number,
-    label,
-}: {
-    item: (typeof whyChooseUs)[number];
-    Icon: React.ElementType;
-    tags: string[];
-    number: string;
-    label: string;
-}) {
-    const cleanName = item.name.replace(/:$/, "");
-
-    return (
-        <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/[0.04] to-white p-5 shadow-[0_2px_12px_-4px_oklch(0.2_0.02_90/0.1)] transition-all duration-500 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_8px_30px_-10px_oklch(0.2_0.02_90/0.18)] sm:p-6">
-            {/* Top number row */}
-            <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                    <span className="font-serif text-xs font-bold italic text-primary">
-                        {number}
-                    </span>
-                    <span className="h-2.5 w-px bg-primary/30" />
-                    <span className="text-[9px] font-bold uppercase tracking-[0.15em] text-primary">
-                        {label}
-                    </span>
-                </div>
-                <div className="flex size-8 items-center justify-center rounded-lg bg-primary shadow-md shadow-primary/20 transition-transform duration-500 group-hover:scale-110">
-                    <Icon className="size-4 text-primary-foreground" />
-                </div>
-            </div>
-
-            {/* Title */}
-            <h3 className="mt-4 text-base font-bold leading-tight tracking-tight text-foreground">
-                {cleanName}
-            </h3>
-
-            {/* Description */}
-            <p className="mt-2 line-clamp-3 flex-1 text-xs leading-relaxed text-foreground/55">
-                {item.description}
-            </p>
-
-            {/* CTA */}
-            <Link
-                href="/about"
-                className="group/btn mt-4 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-primary transition-colors hover:text-primary/80"
-            >
-                Learn our story
-                <RiArrowRightUpLine className="size-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-            </Link>
         </article>
     );
 }

@@ -1,35 +1,34 @@
 export const aboutUs = {
-    para1: "Founded in 2014, AutoBatt Car Repair Mobile Mechanic Dubai was built to eliminate the frustration, towing expenses, and wasted hours associated with traditional brick-and-mortar auto garages. As a premier 24/7 mobile car repair and roadside rescue service, we operate as a fully equipped garage on wheels. We dispatch certified, expert mechanics directly to your exact GPS location—whether you are stranded on a major highway shoulder, parked in your apartment basement, or at your workplace.",
-    para2: "From urgent on-site battery replacements and jump-starts to advanced computer diagnostics, electrical troubleshooting, and emergency mechanical fixes, our technicians deliver complete auto care wherever your car is parked. Headquartered near Jebel Ali and the bustling southern Dubai corridors, our mobile rescue units blanket key service areas including Jebel Ali Industrial Area, Discovery Gardens, Dubai Marina, Jumeirah Lakes Towers (JLT), Al Furjan, and Dubai South. Backed by a rapid 5 to 30 minutes emergency response time, upfront transparent pricing, and 100% genuine parts, we bring dependable dealership-level expertise straight to your door."
+    para1: "Founded in 2014, Car Battery And Auto Mechanical Service was built to eliminate the frustration, towing expenses, and wasted hours associated with traditional brick-and-mortar auto garages. As a fast and professional 24/7 mobile car repair and roadside mechanic service, we bring a fully equipped workshop directly to your location. Whether your vehicle breaks down on a busy road, sits in a residential parking lot, or needs attention outside your office, our certified mechanics come straight to you.",
+    para2: "From urgent on-site car battery replacements and jump-starts to mechanical repairs, diagnostics, and roadside assistance, we deliver reliable auto care wherever your car is parked. Operating from Al Marsa St in Marsa Dubai, our mobile teams cover Marsa Dubai, Dubai Marina, Palm Jumeirah, Jumeirah Beach Residence (JBR), Jumeirah Lakes Towers (JLT), Al Barsha, Al Sufouh, Business Bay, Downtown Dubai, Discovery Gardens, Al Furjan, and surrounding Dubai neighborhoods. Backed by a 5 to 30 minute response time, transparent pricing, and 24/7 availability, we keep you moving without the hassle of towing."
 };
 
 export const whyChooseUs = [
     {
-        name: "Rapid 5–30 Minute Onsite Arrival",
-        description: "Our mobile mechanics are strategically stationed across key Dubai highway arteries and commercial hubs, allowing us to deliver the fastest emergency dispatch and roadside response times when you need help most."
+        name: "Rapid 5 to 30 Minute Response Time",
+        description: "Our mobile mechanics operate around Marsa Dubai and surrounding corridors so we can reach stranded drivers quickly with a 5 to 30 minute target response time whenever breakdown trouble strikes."
     },
     {
-        name: "Complete Onsite Diagnostic & Repair Capabilities",
-        description: "Equipped with state-of-the-art diagnostic scanners and specialized tools, our certified technicians resolve up to 90% of vehicle breakdowns right on the spot—completely eliminating the cost and hassle of flatbed towing."
+        name: "Mobile Service That Comes to You",
+        description: "No need to arrange a tow truck or waste time waiting in a crowded garage queue. Our technicians come directly to your doorstep, office, roadside, or parking spot with the tools needed for on-the-spot care."
     },
     {
-        name: "100% Genuine Batteries & OEM Parts",
-        description: "We supply and install only authentic, factory-approved batteries (such as Varta, Amaron, and ACDelco) and genuine replacement components, ensuring long-term durability and peak performance for all vehicle makes and models."
+        name: "Car Battery & Auto Mechanical Expertise",
+        description: "Whether you need an urgent car battery replacement or mechanical repair work, our certified mechanics handle everyday breakdown issues across a wide range of vehicles and makes."
     },
     {
-        name: "100% Transparent, Upfront Pricing",
-        description: "No hidden fees, no surprise call-out charges, and no inflated workshop invoices. We provide clear, itemized pricing before starting any repair work so you always know exactly what you are paying for."
+        name: "Transparent, Upfront Pricing",
+        description: "We believe in honest, straightforward service with clear pricing before work begins—so you get dependable auto care without surprise charges or garage markups."
     },
     {
-        name: "24/7/365 Round-the-Clock Emergency Coverage",
-        description: "Car troubles don't keep regular business hours. Our dedicated rescue teams operate 24 hours a day, 7 days a week across all weekends and public holidays throughout Dubai and surrounding areas."
+        name: "24/7 Around-the-Clock Availability",
+        description: "Breakdowns happen at any hour of the day or night. Our team operates 24 hours a day, 7 days a week across Dubai so help is always a call or WhatsApp message away."
     },
     {
-        name: "Certified Technicians & Guaranteed Workmanship",
-        description: "Every service is performed by seasoned, multi-brand auto mechanics with years of hands-on expertise. We back our craftsmanship with solid service guarantees to give you complete peace of mind on the road."
+        name: "Trusted Local Coverage Since 2014",
+        description: "Established in 2014 and serving motorists across Marsa Dubai, Dubai Marina, Al Barsha, JLT, Palm Jumeirah, Business Bay, and beyond, we focus on practical, dependable roadside support you can count on."
     }
 ];
-
 /*
 24/7 availablility 
 fast Onsite Mobile Car Repair Service
