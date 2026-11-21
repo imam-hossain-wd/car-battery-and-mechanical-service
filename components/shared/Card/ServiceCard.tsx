@@ -179,26 +179,6 @@ export function ServiceCard({
                 <div className="flex-1 py-4" />
 
                 {/* ============================================
-                    META ROW — mini trust signals
-                ============================================ */}
-                <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1.5">
-                    <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-muted-foreground">
-                        <RiTimeFill className="size-3 text-primary" />
-                        5–15 min
-                    </span>
-                    <span className="text-border">·</span>
-                    <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-muted-foreground">
-                        <RiShieldCheckFill className="size-3 text-primary" />
-                        Warranty
-                    </span>
-                    <span className="text-border">·</span>
-                    <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-muted-foreground">
-                        <RiFlashlightFill className="size-3 text-primary" />
-                        Onsite
-                    </span>
-                </div>
-
-                {/* ============================================
                     CTA ROW
                 ============================================ */}
                 <div className="relative flex items-center justify-between border-t border-border pt-4">

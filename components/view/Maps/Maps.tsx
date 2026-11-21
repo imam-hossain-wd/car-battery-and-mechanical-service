@@ -18,9 +18,11 @@ import {
   RiRadarFill,
   RiNodeTree,
   RiRoadMapFill,
+  RiFlashlightFill,
+  RiCustomerServiceFill,
 } from "@remixicon/react";
 import { cn } from "@/lib/utils";
-import { SiteConfig, streetAddress } from "@/config/siteConfig";
+import { SiteConfig } from "@/config/siteConfig";
 import { Button } from "@/components/ui/button";
 
 const SERVICE_OPTIONS = [
@@ -36,14 +38,8 @@ const SERVICE_OPTIONS = [
 ];
 
 export default function Maps() {
-  const {
-    GMB,
-    serviceAreas,
-    brandName,
-    city,
-    responseTime,
-    location,
-  } = SiteConfig;
+  const { GMB, serviceAreas, brandName, city, responseTime, location } =
+    SiteConfig;
 
   const [isMapLoaded, setIsMapLoaded] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -57,7 +53,10 @@ export default function Maps() {
     message: "",
   });
 
-  const etaRange = useMemo(() => responseTime.replace(" to ", "–"), [responseTime]);
+  const etaRange = useMemo(
+    () => responseTime.replace(" to ", "–"),
+    [responseTime]
+  );
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -86,71 +85,76 @@ export default function Maps() {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#faf9f7] py-10">
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        {/* Warm radial tint */}
-        <div className="absolute left-1/2 top-0 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-primary/[0.05] blur-[120px]" />
-        {/* Hairline dot grid */}
+    <section className="relative isolate w-full overflow-hidden bg-background py-10">
+      {/* ============================================================
+          BACKGROUND — restrained atmosphere
+      ============================================================ */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-primary/[0.06] blur-[140px]" />
         <div
-          className="absolute inset-0 text-neutral-900 opacity-[0.035]"
+          className="absolute inset-0 opacity-[0.03] dark:opacity-[0.045]"
           style={{
             backgroundImage:
               "radial-gradient(circle, currentColor 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
+            backgroundSize: "24px 24px",
             maskImage:
-              "radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 90%)",
+              "radial-gradient(ellipse 80% 60% at 50% 30%, black 20%, transparent 85%)",
             WebkitMaskImage:
-              "radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 90%)",
+              "radial-gradient(ellipse 80% 60% at 50% 30%, black 20%, transparent 85%)",
           }}
         />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       </div>
 
-      <div className="relative mx-auto w-full px-10">
+      <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
         {/* ============================================================
-            HEADER — editorial layout
+            HEADER — editorial with integrated stats
         ============================================================ */}
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
+        <div className="mb-12 grid gap-8 lg:mb-14 lg:grid-cols-12 lg:items-end lg:gap-10">
           {/* Left: label + headline */}
           <div className="lg:col-span-7">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-neutral-900/10 bg-white px-3 py-1 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
-                <span className="relative flex size-1.5">
-                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500/60" />
-                  <span className="relative inline-flex size-1.5 rounded-full bg-emerald-500" />
-                </span>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-neutral-700">
-                  Live Coverage
-                </span>
-              </span>
-              <span className="h-px flex-1 bg-gradient-to-r from-neutral-900/15 to-transparent" />
-            </div>
+    
 
-            <h2 className="mt-6 font-serif text-4xl font-medium leading-[1.02] tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
+            <h2 className="text-[2.4rem] font-bold leading-[0.98] -tracking-[0.03em] text-foreground sm:text-5xl lg:text-[3.75rem]">
               We come to{" "}
-              <span className="relative inline-block italic">
-                <span className="relative z-10">you</span>
-                <span className="absolute inset-x-0 bottom-1 z-0 h-[0.22em] bg-primary/25" />
+              <span className="relative inline-block">
+                <span className="relative z-10 italic text-primary">you</span>
+                <svg
+                  className="absolute -bottom-1.5 left-0 h-3 w-full text-primary/30"
+                  viewBox="0 0 300 12"
+                  fill="none"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 9C60 3 140 2 297 6"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                  />
+                </svg>
               </span>
               ,
               <br />
               anywhere in Dubai.
             </h2>
 
-            <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-neutral-600">
+            <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
               Our mobile mechanics reach your coordinates in{" "}
-              <span className="font-semibold text-neutral-900">
+              <span className="font-semibold text-foreground">
                 {responseTime}
               </span>{" "}
               — day or night, across{" "}
-              <span className="font-semibold text-neutral-900">
+              <span className="font-semibold text-foreground">
                 {serviceAreas.length}+ districts
               </span>
               .
             </p>
           </div>
 
+          {/* Right: compact stat strip */}
           <div className="lg:col-span-5">
-            <div className="grid grid-cols-3 gap-4 border-t border-neutral-900/10 pt-6">
+            <div className="grid grid-cols-3 gap-3 border-t-2 border-primary/15 pt-5 sm:border-t sm:border-border/60">
               <Stat numeral={`${serviceAreas.length}+`} label="Districts" />
               <Stat numeral={etaRange} label="Avg ETA" accent />
               <Stat numeral="24/7" label="Uptime" />
@@ -158,20 +162,22 @@ export default function Maps() {
           </div>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
-          {/* ---------- MAP PANEL (7 cols) ---------- */}
+        {/* ============================================================
+            MAIN CONSOLE — Map (7 cols) + Form (5 cols)
+        ============================================================ */}
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-12 lg:gap-6">
+          {/* =====================================================
+              MAP PANEL — Live dispatch display
+          ===================================================== */}
           <div className="lg:col-span-7">
-            <div className="group relative overflow-hidden rounded-3xl border border-neutral-900/10 bg-white shadow-[0_30px_60px_-30px_rgba(20,20,20,0.15)]">
-              {/* Top strip */}
-          
+            <div className="group relative overflow-hidden rounded-3xl border border-border/70 bg-card shadow-xl shadow-primary/[0.05]">
 
-              {/* Map */}
-              <div className="relative aspect-4/3 w-full overflow-hidden bg-neutral-100 lg:aspect-16/11">
+              <div className="relative aspect-4/3 w-full overflow-hidden bg-muted lg:aspect-16/11">
                 {!isMapLoaded && (
-                  <div className="absolute inset-0 z-10 flex items-center justify-center bg-neutral-100">
+                  <div className="absolute inset-0 z-10 flex items-center justify-center bg-muted">
                     <div className="flex flex-col items-center gap-2.5">
                       <RiRoadMapFill className="size-8 animate-pulse text-primary/60" />
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-400">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
                         Loading map
                       </span>
                     </div>
@@ -199,29 +205,35 @@ export default function Maps() {
             </div>
           </div>
 
-          {/* ---------- FORM PANEL (5 cols) ---------- */}
+          {/* =====================================================
+              FORM PANEL — Integrated dispatch terminal
+          ===================================================== */}
           <div className="lg:col-span-5">
-            <div className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-neutral-900/10 bg-white shadow-[0_30px_60px_-30px_rgba(20,20,20,0.18)]">
-              {/* Header block */}
-              <div className="relative border-b border-neutral-900/10 px-6 pb-5 pt-6">
-                <h3 className="mt-3 font-serif text-2xl font-medium leading-tight tracking-tight text-neutral-900 sm:text-3xl">
+            <div className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/70 bg-card shadow-xl shadow-primary/[0.05]">
+              {/* ---- HEADER ---- */}
+              <div className="relative border-b border-border/60 px-5 pb-5 pt-5 sm:px-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/15">
+                    <RiNavigationFill className="size-4" />
+                  </span>
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                    New Request
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-bold leading-tight tracking-tight text-foreground sm:text-2xl">
                   Request a mechanic
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-neutral-500">
-                  Fill the form and we'll be at your location within{" "}
-                  <span className="font-semibold text-neutral-900">
-                    {responseTime}
-                  </span>
-                  .
-                </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="flex flex-1 flex-col p-6">
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-1 flex-col p-5 sm:p-6"
+              >
                 {isSubmitted ? (
                   <SuccessState />
                 ) : (
-                  <div className="flex flex-1 flex-col gap-4">
-                    {/* Name */}
+                  <div className="flex flex-1 flex-col gap-3.5">
                     <Field
                       icon={RiUserFill}
                       label="Full name"
@@ -236,11 +248,10 @@ export default function Maps() {
                         onChange={handleChange}
                         required
                         placeholder="Ahmed Al Maktoum"
-                        className="h-10 w-full border-0 bg-transparent text-sm font-medium text-neutral-900 outline-none placeholder:text-neutral-400"
+                        className="h-9 w-full border-0 bg-transparent text-sm font-medium text-foreground outline-none placeholder:text-muted-foreground/60"
                       />
                     </Field>
 
-                    {/* Phone + email */}
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                       <Field
                         icon={RiPhoneFill}
@@ -256,7 +267,7 @@ export default function Maps() {
                           onChange={handleChange}
                           required
                           placeholder="+971 50 000 0000"
-                          className="h-10 w-full border-0 bg-transparent text-sm font-medium text-neutral-900 outline-none placeholder:text-neutral-400"
+                          className="h-9 w-full border-0 bg-transparent text-sm font-medium text-foreground outline-none placeholder:text-muted-foreground/60"
                         />
                       </Field>
                       <Field icon={RiMailFill} label="Email" htmlFor="email">
@@ -267,12 +278,11 @@ export default function Maps() {
                           value={formData.email}
                           onChange={handleChange}
                           placeholder="you@mail.com"
-                          className="h-10 w-full border-0 bg-transparent text-sm font-medium text-neutral-900 outline-none placeholder:text-neutral-400"
+                          className="h-9 w-full border-0 bg-transparent text-sm font-medium text-foreground outline-none placeholder:text-muted-foreground/60"
                         />
                       </Field>
                     </div>
 
-                    {/* Service */}
                     <Field
                       icon={RiNodeTree}
                       label="Service needed"
@@ -285,7 +295,7 @@ export default function Maps() {
                         value={formData.service}
                         onChange={handleChange}
                         required
-                        className="h-10 w-full cursor-pointer border-0 bg-transparent text-sm font-medium text-neutral-900 outline-none"
+                        className="h-9 w-full cursor-pointer border-0 bg-transparent text-sm font-medium text-foreground outline-none"
                       >
                         <option value="">Select a service</option>
                         {SERVICE_OPTIONS.map((s) => (
@@ -296,7 +306,6 @@ export default function Maps() {
                       </select>
                     </Field>
 
-                    {/* Notes */}
                     <Field
                       icon={RiMessageFill}
                       label="Notes (optional)"
@@ -309,31 +318,30 @@ export default function Maps() {
                         onChange={handleChange}
                         rows={2}
                         placeholder="Issue, location, plate…"
-                        className="w-full resize-none border-0 bg-transparent pt-2 text-sm font-medium text-neutral-900 outline-none placeholder:text-neutral-400"
+                        className="w-full resize-none border-0 bg-transparent pt-1.5 text-sm font-medium text-foreground outline-none placeholder:text-muted-foreground/60"
                       />
                     </Field>
 
-                    {/* Submit */}
                     <Button
                       type="submit"
                       disabled={isSubmitting}
                       className={cn(
-                        "group mt-1 inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-neutral-900 text-[12px] font-bold uppercase tracking-[0.15em] text-white",
-                        "transition-all duration-200 hover:bg-neutral-800",
-                        "shadow-[0_10px_25px_-12px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_30px_-12px_rgba(0,0,0,0.6)]",
+                        "group relative mt-1 inline-flex h-12 w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-primary text-[11px] font-bold uppercase tracking-[0.15em] text-primary-foreground",
+                        "shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/40",
                         "disabled:cursor-not-allowed disabled:opacity-60"
                       )}
                     >
+                      <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
                       {isSubmitting ? (
                         <>
-                          <RiLoader4Line className="size-4 animate-spin" />
-                          Sending…
+                          <RiLoader4Line className="relative size-4 animate-spin" />
+                          <span className="relative">Sending…</span>
                         </>
                       ) : (
                         <>
-                          <RiSendPlaneFill className="size-3.5" />
-                          Send Request
-                          <RiArrowRightLine className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+                          <RiSendPlaneFill className="relative size-3.5" />
+                          <span className="relative">Send Request</span>
+                          <RiArrowRightLine className="relative size-3.5 transition-transform group-hover:translate-x-0.5" />
                         </>
                       )}
                     </Button>
@@ -345,23 +353,36 @@ export default function Maps() {
         </div>
 
         {/* ============================================================
-            BOTTOM TRUST STRIP
+            BOTTOM TRUST STRIP — compact & refined
         ============================================================ */}
-        <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-neutral-900/10 pt-6 text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-500">
-          <span className="inline-flex items-center gap-1.5 text-neutral-900">
-            <span className="size-1 rounded-full bg-primary" />
-            Priority dispatch
-          </span>
-          <span>·</span>
-          <span>Certified mechanics</span>
-          <span>·</span>
-          <span>No hidden fees</span>
-          <span>·</span>
-          <span>On-site diagnosis</span>
-          <span className="ml-auto inline-flex items-center gap-1.5 text-primary">
-            <span className="size-1 rounded-full bg-primary" />
-            {responseTime} response
-          </span>
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-border/60 bg-muted/30 px-5 py-3 backdrop-blur-sm">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            {[
+              { icon: RiFlashlightFill, text: "Priority dispatch" },
+              { icon: RiShieldCheckFill, text: "Certified mechanics" },
+              { icon: RiCustomerServiceFill, text: "24/7 support" },
+              { icon: RiTimeFill, text: `${responseTime} response` },
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <span
+                  key={i}
+                  className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground"
+                >
+                  <Icon className="size-3 text-primary" />
+                  {item.text}
+                </span>
+              );
+            })}
+          </div>
+
+          <Link
+            href={SiteConfig.numberCallLink}
+            className="group inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-primary transition-colors hover:text-primary/80"
+          >
+            Prefer a call? {SiteConfig.displayNumber}
+            <RiArrowRightLine className="size-3 transition-transform group-hover:translate-x-0.5" />
+          </Link>
         </div>
       </div>
     </section>
@@ -369,7 +390,7 @@ export default function Maps() {
 }
 
 /* ============================================================
-   SUB-COMPONENTS
+    SUB-COMPONENTS
 ============================================================ */
 
 function Stat({
@@ -385,38 +406,16 @@ function Stat({
     <div className="flex flex-col">
       <span
         className={cn(
-          "font-serif text-2xl font-medium leading-none tracking-tight sm:text-3xl",
-          accent ? "text-primary" : "text-neutral-900"
+          "text-2xl font-black leading-none tracking-tight sm:text-3xl",
+          accent ? "text-primary" : "text-foreground"
         )}
       >
         {numeral}
       </span>
-      <span className="mt-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-500">
+      <span className="mt-1.5 text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground sm:text-[10px]">
         {label}
       </span>
     </div>
-  );
-}
-
-function InfoPill({
-  icon,
-  label,
-  value,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-}) {
-  return (
-    <span className="inline-flex items-center gap-2">
-      {icon}
-      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-neutral-400">
-        {label}
-      </span>
-      <span className="text-[12px] font-semibold text-neutral-800">
-        {value}
-      </span>
-    </span>
   );
 }
 
@@ -434,10 +433,10 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div className="group relative rounded-xl border border-neutral-900/10 bg-neutral-50/60 px-3.5 pb-2 pt-2.5 transition-all duration-200 focus-within:border-primary/50 focus-within:bg-white focus-within:shadow-[0_0_0_4px_rgba(120,80,255,0.06)]">
+    <div className="group relative rounded-xl border border-border/70 bg-muted/30 px-3 pb-1.5 pt-2 transition-all duration-200 focus-within:border-primary/50 focus-within:bg-background focus-within:shadow-[0_0_0_4px_hsl(var(--primary)/0.08)]">
       <label
         htmlFor={htmlFor}
-        className="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.22em] text-neutral-500 transition-colors group-focus-within:text-primary"
+        className="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground transition-colors group-focus-within:text-primary"
       >
         <Icon className="size-2.5" />
         {label}
@@ -450,24 +449,24 @@ function Field({
 
 function SuccessState() {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center py-14 text-center">
+    <div className="flex flex-1 flex-col items-center justify-center py-12 text-center">
       <div className="relative flex size-16 items-center justify-center">
-        <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/25" />
-        <span className="absolute inset-2 rounded-full bg-emerald-100" />
-        <RiCheckboxCircleFill className="relative size-8 text-emerald-600" />
+        <span className="absolute inset-0 animate-ping rounded-full bg-primary/20" />
+        <span className="absolute inset-2 rounded-full bg-primary/10" />
+        <RiCheckboxCircleFill className="relative size-8 text-primary" />
       </div>
-      <h4 className="mt-5 font-serif text-xl font-medium tracking-tight text-neutral-900">
+      <h4 className="mt-5 text-lg font-bold tracking-tight text-foreground">
         Request received
       </h4>
-      <p className="mt-2 max-w-[17rem] text-sm leading-relaxed text-neutral-500">
-        Our dispatch team will call you back within 60 seconds to confirm
-        your booking.
+      <p className="mt-2 max-w-[17rem] text-xs leading-relaxed text-muted-foreground sm:text-sm">
+        Our dispatch team will call you back within 60 seconds to confirm your
+        booking.
       </p>
       <div className="mt-5 flex items-center gap-1.5">
         {[...Array(3)].map((_, i) => (
           <span
             key={i}
-            className="size-1.5 animate-pulse rounded-full bg-emerald-500"
+            className="size-1.5 animate-pulse rounded-full bg-primary"
             style={{ animationDelay: `${i * 150}ms` }}
           />
         ))}

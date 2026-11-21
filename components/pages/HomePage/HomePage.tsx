@@ -15,15 +15,15 @@ export default function HomePage() {
   return (
     <div>
       <Hero />
-      <ServiceAreas />
       <HowItWorks />
       <FeaturedServices />
       <WhoWeAre />
       <WhyChooseUs />
+      <ServiceAreas />
       <Projects />
       <Maps />
-      <FAQ />
       <Reviews />
+      <FAQ />
     </div>
   )
 }

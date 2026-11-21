@@ -15,7 +15,6 @@ import { SiteConfig } from "@/config/siteConfig";
 import Link from "next/link";
 
 export default function FloatingButtons() {
-    // const [isVisible, setIsVisible] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
     const [isScrolling, setIsScrolling] = useState(false);
 
@@ -69,14 +68,28 @@ export default function FloatingButtons() {
                 <div className="relative border-t border-border bg-background/95 px-3 py-2.5 shadow-[0_-4px_20px_-8px] shadow-primary/20 backdrop-blur-xl sm:px-4">
                     <div className="mx-auto flex max-w-2xl items-center gap-2">
                         {/* Call Now */}
-                        <Link
+
+           <Link
+                            href={numberCallLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Call Now"
+                            className="group flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-3 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-200 active:scale-95"
+                        >
+                            <RiPhoneFill className="size-4" />
+                            <span>Call Now</span>
+                        </Link>
+
+
+                        {/* ----------------- */}
+                        {/* <Link
                             href={numberCallLink}
                             aria-label="Call now"
                             className="group flex h-12 flex-1 items-center justify-center gap-2 rounded-xl border-2 border-primary/25 bg-primary/[0.06] px-3 text-sm font-bold text-primary transition-all duration-200 active:scale-95"
                         >
                             <RiPhoneFill className="size-4" />
                             <span>Call Now</span>
-                        </Link>
+                        </Link> */}
 
                         {/* WhatsApp */}
                         <Link
@@ -84,7 +97,7 @@ export default function FloatingButtons() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="Chat on WhatsApp"
-                            className="group flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-3 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-200 active:scale-95"
+                            className="group flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-green-500 px-3 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-200 active:scale-95"
                         >
                             <RiWhatsappFill className="size-4" />
                             <span>WhatsApp</span>
