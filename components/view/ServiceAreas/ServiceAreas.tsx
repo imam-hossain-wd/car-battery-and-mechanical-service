@@ -19,7 +19,7 @@ export default function ServiceAreas() {
 
     return (
         <div>
-            <div className="w-[90%] mx-auto py-10 ">
+            <div className="w-[90%] mx-auto py-8">
                 {/* Header */}
                 <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
                     <div className="flex items-center gap-3">

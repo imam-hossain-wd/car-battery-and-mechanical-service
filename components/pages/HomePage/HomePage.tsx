@@ -19,9 +19,9 @@ export default function HomePage() {
       <FeaturedServices />
       <WhoWeAre />
       <WhyChooseUs />
-      <ServiceAreas />
       <Projects />
       <Maps />
+      <ServiceAreas />
       <Reviews />
       <FAQ />
     </div>

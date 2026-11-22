@@ -113,9 +113,9 @@ export default function FAQ() {
         ============================================================ */}
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="mt-6 text-[2.2rem] font-bold leading-[1.02] -tracking-[0.03em] text-foreground sm:text-5xl lg:text-[3.5rem]">
-            Questions,{" "}
+           Frequently Asked{" "}
             <span className="relative inline-block">
-              <span className="relative z-10 italic text-primary">answered</span>
+              <span className="relative z-10 italic text-primary">Questions</span>
               <svg
                 className="absolute -bottom-1.5 left-0 h-3 w-full text-primary/30"
                 viewBox="0 0 300 12"
@@ -139,60 +139,6 @@ export default function FAQ() {
             across{" "}
             <span className="font-semibold text-foreground">{city}</span>.
           </p>
-        </div>
-
-        {/* ============================================================
-            SEARCH BAR — primary interaction (hero-scale)
-        ============================================================ */}
-        <div className="mx-auto mt-10 max-w-2xl">
-          <div className="group relative">
-            <div className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2">
-              <RiSearchLine className="size-5 text-muted-foreground transition-colors group-focus-within:text-primary" />
-            </div>
-            <input
-              ref={searchInputRef}
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search 20+ answers…"
-              className="h-14 w-full rounded-2xl border border-border bg-card pl-14 pr-14 text-sm font-medium text-foreground shadow-lg shadow-primary/[0.04] outline-none transition-all placeholder:text-muted-foreground/60 focus:border-primary/50 focus:shadow-xl focus:shadow-primary/[0.08] sm:text-[15px]"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => {
-                  setSearchQuery("");
-                  searchInputRef.current?.focus();
-                }}
-                className="absolute right-4 top-1/2 flex size-8 -translate-y-1/2 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                aria-label="Clear search"
-              >
-                <RiCloseLine className="size-4" />
-              </button>
-            )}
-          </div>
-
-          {/* Category pills */}
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-            {CATEGORIES.map((cat) => {
-              const Icon = cat.icon;
-              const active = activeCategory === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
-                  className={cn(
-                    "group inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider transition-all duration-200",
-                    active
-                      ? "border-primary bg-primary text-primary-foreground shadow-md shadow-primary/25"
-                      : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground"
-                  )}
-                >
-                  <Icon className="size-3" />
-                  {cat.label}
-                </button>
-              );
-            })}
-          </div>
         </div>
 
         {/* ============================================================
